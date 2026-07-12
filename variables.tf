@@ -7,6 +7,8 @@ Required:
     - path_pattern
     - resource_group_name
     - storage_account_key
+    - storage_account_key_key_vault_id (alternative to storage_account_key - read from Key Vault instead)
+    - storage_account_key_key_vault_secret_name (alternative to storage_account_key - read from Key Vault instead)
     - storage_account_name
     - storage_container_name
     - stream_analytics_job_name
@@ -20,16 +22,18 @@ Optional:
 EOT
 
   type = map(object({
-    date_format               = string
-    name                      = string
-    path_pattern              = string
-    resource_group_name       = string
-    storage_account_key       = string
-    storage_account_name      = string
-    storage_container_name    = string
-    stream_analytics_job_name = string
-    time_format               = string
-    authentication_mode       = optional(string) # Default: "ConnectionString"
+    date_format                               = string
+    name                                      = string
+    path_pattern                              = string
+    resource_group_name                       = string
+    storage_account_key                       = string
+    storage_account_key_key_vault_id          = optional(string)
+    storage_account_key_key_vault_secret_name = optional(string)
+    storage_account_name                      = string
+    storage_container_name                    = string
+    stream_analytics_job_name                 = string
+    time_format                               = string
+    authentication_mode                       = optional(string) # Default: "ConnectionString"
     serialization = object({
       encoding        = optional(string)
       field_delimiter = optional(string)
